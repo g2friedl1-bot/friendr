@@ -112,7 +112,7 @@ export const FAKE_USERS: FakeUser[] = [
     posts: [
       { text: "5K personal best this morning. Felt unstoppable.", hoursAgo: 5 },
       { text: "Leg day. Enough said.", hoursAgo: 20 },
-      { text: "Game tonight at 7 — let's go 🏀", hoursAgo: 44 },
+      { text: "Game tonight at 7 — let's go", hoursAgo: 44 },
     ],
     chatScript: [
       "yo! you work out at all?",

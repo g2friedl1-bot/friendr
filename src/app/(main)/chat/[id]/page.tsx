@@ -4,8 +4,10 @@ import { useParams } from "next/navigation";
 import { getUserById } from "@/lib/users";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowLeft, Send, Flag } from "lucide-react";
+import { ArrowLeft, Send, Flag, UserPlus } from "lucide-react";
+import Link from "next/link";
 import ReportModal from "@/components/ReportModal";
+import { useFriends } from "@/lib/useFriends";
 
 type Message = { role: "user" | "them"; text: string; time: string };
 
@@ -22,6 +24,7 @@ export default function PersonChatPage() {
   const [typing, setTyping] = useState(false);
   const [showReport, setShowReport] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const { isFriend, addFriend } = useFriends();
 
   useEffect(() => {
     if (!user) return;
@@ -69,6 +72,26 @@ export default function PersonChatPage() {
     return (
       <main className="min-h-screen bg-white dark:bg-zinc-950 flex items-center justify-center">
         <p className="text-zinc-400">User not found.</p>
+      </main>
+    );
+  }
+
+  if (!isFriend(id)) {
+    return (
+      <main className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center justify-center px-6 pb-24">
+        <img src={user.photo} alt={user.name} className="w-20 h-20 rounded-full object-cover mb-4 ring-2 ring-zinc-200 dark:ring-zinc-700" />
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-1">{user.name}</h2>
+        <p className="text-zinc-500 text-sm mb-8 text-center">Add {user.name} as a friend to start chatting.</p>
+        <button
+          onClick={() => addFriend(id)}
+          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 dark:bg-white hover:bg-zinc-700 dark:hover:bg-zinc-100 text-white dark:text-zinc-900 font-semibold transition-all"
+        >
+          <UserPlus className="w-4 h-4" />
+          Add {user.name}
+        </button>
+        <Link href="/find" className="mt-4 text-sm text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">
+          ← Back to Find People
+        </Link>
       </main>
     );
   }

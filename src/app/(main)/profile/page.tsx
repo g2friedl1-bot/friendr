@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Camera, Pencil } from "lucide-react";
+import { Camera, Pencil, UserMinus } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import { useFriends } from "@/lib/useFriends";
+import { getUserById } from "@/lib/users";
 
 type QuizSummary = { emoji: string; title: string; tags: string[] };
 
@@ -13,6 +15,7 @@ export default function ProfilePage() {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { friends, removeFriend } = useFriends();
 
   useEffect(() => {
     const saved = localStorage.getItem("friendr_quiz_result");
@@ -152,6 +155,53 @@ export default function ProfilePage() {
             )}
           </div>
         )}
+
+        {/* Friends list */}
+        <div className="mt-8">
+          <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">
+            Friends {friends.length > 0 && <span className="normal-case font-normal">({friends.length})</span>}
+          </p>
+          {friends.length === 0 ? (
+            <div className="px-4 py-5 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-center">
+              <p className="text-zinc-400 dark:text-zinc-600 text-sm">No friends added yet.</p>
+              <Link href="/find" className="text-brand text-sm font-medium mt-1 inline-block hover:underline">
+                Find people →
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {friends.map((fid) => {
+                const u = getUserById(fid);
+                if (!u) return null;
+                return (
+                  <div key={fid} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+                    <Link href={`/users/${fid}`} className="flex-shrink-0">
+                      <img src={u.photo} alt={u.name} className="w-10 h-10 rounded-full object-cover" />
+                    </Link>
+                    <div className="flex-1 min-w-0">
+                      <Link href={`/users/${fid}`}>
+                        <p className="font-semibold text-zinc-900 dark:text-white text-sm hover:text-brand transition-colors">{u.name}</p>
+                      </Link>
+                      <p className="text-zinc-500 text-xs truncate">{u.interests.slice(0, 2).join(", ")}</p>
+                    </div>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <Link href={`/chat/${fid}`} className="px-3 py-1.5 rounded-full bg-brand hover:bg-brand-light text-white text-xs font-semibold transition-all">
+                        Chat
+                      </Link>
+                      <button
+                        onClick={() => removeFriend(fid)}
+                        className="w-7 h-7 flex items-center justify-center rounded-full text-zinc-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition-all"
+                        aria-label="Remove friend"
+                      >
+                        <UserMinus className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

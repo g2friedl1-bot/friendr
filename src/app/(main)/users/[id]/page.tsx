@@ -3,10 +3,11 @@
 import { useParams, useRouter } from "next/navigation";
 import { getUserById } from "@/lib/users";
 import Link from "next/link";
-import { ArrowLeft, MessageCircle, Flag } from "lucide-react";
+import { ArrowLeft, MessageCircle, UserPlus, UserMinus, Flag } from "lucide-react";
 import { useState, useEffect } from "react";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
 import ReportModal from "@/components/ReportModal";
+import { useFriends } from "@/lib/useFriends";
 
 export default function UserProfilePage() {
   const { id } = useParams<{ id: string }>();
@@ -15,10 +16,18 @@ export default function UserProfilePage() {
   const [showAgeModal, setShowAgeModal] = useState(false);
   const [showReport, setShowReport] = useState(false);
   const [verified, setVerified] = useState(false);
+  const { isFriend, addFriend, removeFriend } = useFriends();
+  const [justAdded, setJustAdded] = useState(false);
 
   useEffect(() => {
     setVerified(localStorage.getItem("friendr_age_verified") === "true");
   }, []);
+
+  function handleAdd() {
+    addFriend(id);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1500);
+  }
 
   function handleChat() {
     if (!verified) setShowAgeModal(true);
@@ -40,6 +49,8 @@ export default function UserProfilePage() {
     );
   }
 
+  const alreadyFriend = isFriend(id);
+
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 pb-24">
       <div className="max-w-lg mx-auto px-4 pt-8">
@@ -56,6 +67,7 @@ export default function UserProfilePage() {
           </button>
         </div>
 
+        {/* Avatar + info */}
         <div className="flex items-center gap-5 mb-6">
           <img
             src={user.photo}
@@ -69,14 +81,39 @@ export default function UserProfilePage() {
           </div>
         </div>
 
-        <button
-          onClick={handleChat}
-          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-semibold transition-all mb-6"
-        >
-          <MessageCircle className="w-4 h-4" />
-          Chat with {user.name}
-        </button>
+        {/* Action buttons */}
+        {alreadyFriend ? (
+          <div className="flex gap-3 mb-6">
+            <button
+              onClick={handleChat}
+              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-semibold transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Message
+            </button>
+            <button
+              onClick={() => removeFriend(id)}
+              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 hover:border-red-300 dark:hover:border-red-700 hover:text-red-500 dark:hover:text-red-400 font-semibold transition-all text-sm"
+            >
+              <UserMinus className="w-4 h-4" />
+              Remove
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={handleAdd}
+            className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold transition-all mb-6 ${
+              justAdded
+                ? "bg-emerald-500 text-white"
+                : "bg-zinc-900 dark:bg-white hover:bg-zinc-700 dark:hover:bg-zinc-100 text-white dark:text-zinc-900"
+            }`}
+          >
+            <UserPlus className="w-4 h-4" />
+            {justAdded ? "Added!" : `Add ${user.name}`}
+          </button>
+        )}
 
+        {/* Interests */}
         <div className="mb-6">
           <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">Interests</p>
           <div className="flex flex-wrap gap-2">
@@ -88,6 +125,7 @@ export default function UserProfilePage() {
           </div>
         </div>
 
+        {/* Posts */}
         <div>
           <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">Posts</p>
           <div className="space-y-2">

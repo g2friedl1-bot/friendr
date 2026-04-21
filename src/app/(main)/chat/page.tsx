@@ -47,15 +47,15 @@ export default function AIChatPage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 flex flex-col pb-[65px]">
-      <div className="sticky top-0 z-10 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 px-4 py-3 flex items-center gap-3">
-        <Link href="/chats" className="w-8 h-8 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-all">
+    <main className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col pb-[65px]">
+      <div className="sticky top-0 z-10 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 px-4 py-3 flex items-center gap-3">
+        <Link href="/chats" className="w-8 h-8 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all">
           <ArrowLeft className="w-4 h-4" />
         </Link>
-        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-brand-light flex items-center justify-center text-white font-bold text-xs">AI</div>
+        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-light to-brand flex items-center justify-center text-white font-bold text-xs">AI</div>
         <div>
-          <p className="font-semibold text-white text-sm">Friendr AI</p>
-          <p className="text-xs text-emerald-400">Online</p>
+          <p className="font-semibold text-zinc-900 dark:text-white text-sm">Friendr AI</p>
+          <p className="text-xs text-emerald-500 dark:text-emerald-400">Online</p>
         </div>
       </div>
 
@@ -67,8 +67,8 @@ export default function AIChatPage() {
                 msg.role === "user"
                   ? "bg-brand text-white rounded-br-sm"
                   : msg.isCrisis
-                    ? "bg-red-950 border border-red-700/60 text-white rounded-bl-sm"
-                    : "bg-zinc-800 border border-zinc-700 text-zinc-100 rounded-bl-sm"
+                    ? "bg-red-50 dark:bg-red-950 border border-red-300 dark:border-red-700/60 text-red-900 dark:text-white rounded-bl-sm"
+                    : "bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-bl-sm"
               }`}>
                 {msg.text}
               </div>
@@ -78,20 +78,20 @@ export default function AIChatPage() {
                     <Phone className="w-4 h-4" />
                     Call or Text 988 Now
                   </a>
-                  <Link href="/betterhelp" className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-red-700/50 text-red-400 hover:bg-red-950 text-sm font-medium transition-all">
+                  <Link href="/betterhelp" className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-red-300 dark:border-red-700/50 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 text-sm font-medium transition-all">
                     View all support resources →
                   </Link>
                 </div>
               )}
-              <span className="text-xs text-zinc-600 px-1">{msg.time}</span>
+              <span className="text-xs text-zinc-400 dark:text-zinc-600 px-1">{msg.time}</span>
             </div>
           </div>
         ))}
         {typing && (
           <div className="flex justify-start">
-            <div className="bg-zinc-800 border border-zinc-700 px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1">
+            <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1">
               {[0, 1, 2].map((i) => (
-                <span key={i} className="w-2 h-2 rounded-full bg-zinc-500 animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
+                <span key={i} className="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-500 animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
               ))}
             </div>
           </div>
@@ -99,14 +99,14 @@ export default function AIChatPage() {
         <div ref={bottomRef} />
       </div>
 
-      <div className="fixed bottom-[65px] left-0 right-0 bg-zinc-950/95 backdrop-blur-md border-t border-zinc-800 px-4 py-3 z-40">
+      <div className="fixed bottom-[65px] left-0 right-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-800 px-4 py-3 z-40">
         <div className="max-w-lg mx-auto flex gap-2">
           <input
             type="text" value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
             placeholder="Say something..."
-            className="flex-1 px-4 py-2.5 rounded-full bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm"
+            className="flex-1 px-4 py-2.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm"
           />
           <button onClick={send} disabled={!input.trim()}
             className="w-10 h-10 rounded-full bg-brand hover:bg-brand-light flex items-center justify-center text-white disabled:opacity-30 transition-all">

@@ -32,16 +32,16 @@ export default function UserProfilePage() {
 
   if (!user) {
     return (
-      <main className="min-h-screen bg-zinc-950 flex items-center justify-center">
-        <p className="text-zinc-500">User not found.</p>
+      <main className="min-h-screen bg-white dark:bg-zinc-950 flex items-center justify-center">
+        <p className="text-zinc-400">User not found.</p>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 pb-24">
+    <main className="min-h-screen bg-white dark:bg-zinc-950 pb-24">
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <Link href="/home" className="inline-flex items-center gap-2 text-zinc-500 hover:text-white transition-colors mb-6 text-sm">
+        <Link href="/home" className="inline-flex items-center gap-2 text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors mb-6 text-sm">
           <ArrowLeft className="w-4 h-4" /> Back
         </Link>
 
@@ -50,9 +50,9 @@ export default function UserProfilePage() {
             {user.initials}
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">{user.name}</h1>
+            <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">{user.name}</h1>
             <p className="text-zinc-500 text-sm">Age {user.age}</p>
-            <p className="text-zinc-400 text-sm mt-1">{user.bio}</p>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm mt-1">{user.bio}</p>
           </div>
         </div>
 
@@ -65,10 +65,10 @@ export default function UserProfilePage() {
         </button>
 
         <div className="mb-6">
-          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Interests</p>
+          <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">Interests</p>
           <div className="flex flex-wrap gap-2">
             {user.interests.map((interest) => (
-              <span key={interest} className="px-3 py-1.5 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300 text-sm">
+              <span key={interest} className="px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm">
                 {interest}
               </span>
             ))}
@@ -76,11 +76,11 @@ export default function UserProfilePage() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Posts</p>
+          <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">Posts</p>
           <div className="space-y-2">
             {user.posts.map((post, i) => (
-              <div key={i} className="px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800">
-                <p className="text-zinc-300 text-sm leading-relaxed">{post.text}</p>
+              <div key={i} className="px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+                <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">{post.text}</p>
               </div>
             ))}
           </div>

@@ -15,20 +15,20 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center px-6">
+    <main className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center justify-center px-6">
       <div className="w-full max-w-sm text-center">
         <div className="mb-3">
-          <span className="text-6xl font-black text-white tracking-tight">
+          <span className="text-6xl font-black text-zinc-900 dark:text-white tracking-tight">
             friend<span className="text-brand">r</span>
           </span>
         </div>
-        <p className="text-zinc-400 mb-12 text-base">
+        <p className="text-zinc-500 dark:text-zinc-400 mb-12 text-base">
           Meet people who actually get you.
         </p>
 
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 text-left">
+            <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2 text-left">
               What&apos;s your name?
             </label>
             <input
@@ -38,7 +38,7 @@ export default function LoginPage() {
               onKeyDown={(e) => e.key === "Enter" && handleEnter()}
               placeholder="Enter your name..."
               autoFocus
-              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-lg"
+              className="w-full px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-lg"
             />
           </div>
           <button
@@ -50,7 +50,7 @@ export default function LoginPage() {
           </button>
         </div>
 
-        <p className="mt-8 text-xs text-zinc-600">
+        <p className="mt-8 text-xs text-zinc-400 dark:text-zinc-600">
           By continuing you confirm you are 18 or older.
         </p>
       </div>

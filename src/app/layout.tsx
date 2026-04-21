@@ -12,8 +12,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html lang="en" className="dark">
+      <head>
+        {/* Prevent flash of wrong theme */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('friendr_theme');if(t==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}})();` }} />
+      </head>
+      <body className="antialiased bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white transition-colors duration-200">
+        {children}
+      </body>
     </html>
   );
 }

@@ -19,7 +19,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm text-center">
         <div className="mb-3">
           <span className="text-6xl font-black text-white tracking-tight">
-            friend<span className="text-orange-500">r</span>
+            friend<span className="text-brand">r</span>
           </span>
         </div>
         <p className="text-zinc-400 mb-12 text-base">
@@ -38,13 +38,13 @@ export default function LoginPage() {
               onKeyDown={(e) => e.key === "Enter" && handleEnter()}
               placeholder="Enter your name..."
               autoFocus
-              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-orange-500 transition-colors text-lg"
+              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-lg"
             />
           </div>
           <button
             onClick={handleEnter}
             disabled={!name.trim()}
-            className="w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full py-3.5 rounded-xl bg-brand hover:bg-brand-light text-white font-bold text-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Let&apos;s go →
           </button>

@@ -23,10 +23,10 @@ export default function ChatsPage() {
     if (aiLast) {
       try {
         const d = JSON.parse(aiLast);
-        entries.push({ href: "/chat", name: "Friendr AI", initials: "AI", gradient: "from-orange-500 to-amber-400", lastText: d.text, time: d.time });
+        entries.push({ href: "/chat", name: "Friendr AI", initials: "AI", gradient: "from-brand to-brand-light", lastText: d.text, time: d.time });
       } catch { /* skip */ }
     } else {
-      entries.push({ href: "/chat", name: "Friendr AI", initials: "AI", gradient: "from-orange-500 to-amber-400", lastText: "Start a conversation!", time: "" });
+      entries.push({ href: "/chat", name: "Friendr AI", initials: "AI", gradient: "from-brand to-brand-light", lastText: "Start a conversation!", time: "" });
     }
 
     FAKE_USERS.forEach((u) => {

@@ -79,7 +79,7 @@ export const FAKE_USERS: FakeUser[] = [
     name: "Riley",
     age: 28,
     initials: "R",
-    gradient: "from-amber-400 to-orange-500",
+    gradient: "from-brand-light to-brand",
     interests: ["Travel", "Photography", "Art", "Fashion", "Film Making"],
     bio: "Chasing sunsets, galleries, and good coffee. Aspiring filmmaker.",
     posts: [

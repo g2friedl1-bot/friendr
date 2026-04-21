@@ -51,7 +51,7 @@ export default function FindPage() {
               </Link>
               <div className="flex-1 min-w-0">
                 <Link href={`/users/${user.id}`}>
-                  <p className="font-semibold text-white hover:text-orange-400 transition-colors text-sm">{user.name}, {user.age}</p>
+                  <p className="font-semibold text-white hover:text-brand-light transition-colors text-sm">{user.name}, {user.age}</p>
                 </Link>
                 <div className="flex flex-wrap gap-1 mt-1">
                   {user.interests.slice(0, 3).map((i) => (
@@ -61,7 +61,7 @@ export default function FindPage() {
                 </div>
               </div>
               <button onClick={() => handleChat(user.id)}
-                className="flex-shrink-0 w-9 h-9 rounded-full bg-zinc-800 hover:bg-orange-500 flex items-center justify-center text-zinc-400 hover:text-white transition-all">
+                className="flex-shrink-0 w-9 h-9 rounded-full bg-zinc-800 hover:bg-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all">
                 <MessageCircle className="w-4 h-4" />
               </button>
             </div>

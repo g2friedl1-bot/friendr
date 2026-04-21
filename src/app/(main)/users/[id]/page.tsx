@@ -58,7 +58,7 @@ export default function UserProfilePage() {
 
         <button
           onClick={handleChat}
-          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-400 text-white font-semibold transition-all mb-6"
+          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-semibold transition-all mb-6"
         >
           <MessageCircle className="w-4 h-4" />
           Chat with {user.name}

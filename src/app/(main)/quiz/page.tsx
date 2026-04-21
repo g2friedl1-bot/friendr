@@ -203,7 +203,7 @@ export default function QuizPage() {
         <span className="text-xs text-zinc-500">{Math.round(progress)}%</span>
       </div>
       <div className="h-1 rounded-full bg-zinc-800">
-        <div className="h-full rounded-full bg-orange-500 transition-all duration-500" style={{ width: `${progress}%` }} />
+        <div className="h-full rounded-full bg-brand transition-all duration-500" style={{ width: `${progress}%` }} />
       </div>
     </div>
   );
@@ -218,12 +218,12 @@ export default function QuizPage() {
             </Link>
             <h1 className="text-2xl font-bold text-white">Your Results</h1>
           </div>
-          <div className="rounded-2xl bg-orange-500/10 border border-orange-500/30 p-6 mb-4 text-center">
+          <div className="rounded-2xl bg-brand/10 border border-brand/30 p-6 mb-4 text-center">
             <div className="text-6xl mb-4">{result.emoji}</div>
             <h2 className="text-2xl font-bold text-white mb-4">{result.title}</h2>
             <div className="flex flex-wrap justify-center gap-2 mb-4">
               {result.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-300 text-xs font-semibold">{tag}</span>
+                <span key={tag} className="px-3 py-1 rounded-full bg-brand/20 border border-brand/30 text-brand-light text-xs font-semibold">{tag}</span>
               ))}
             </div>
             <p className="text-zinc-300 leading-relaxed text-sm">{result.blurb}</p>
@@ -267,7 +267,7 @@ export default function QuizPage() {
           <div className="relative mb-4">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
             <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search interests..."
-              className="w-full pl-10 pr-10 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-orange-500 transition-colors" />
+              className="w-full pl-10 pr-10 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors" />
             {search && (
               <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white">
                 <X className="w-4 h-4" />
@@ -278,7 +278,7 @@ export default function QuizPage() {
             <div className="flex flex-wrap gap-2 mb-4">
               {[...selected].map((s) => (
                 <span key={s} onClick={() => toggleInterest(s)}
-                  className="flex items-center gap-1 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 text-xs cursor-pointer hover:bg-orange-500/30 transition-all">
+                  className="flex items-center gap-1 px-3 py-1 rounded-full bg-brand/20 border border-brand/40 text-brand-light text-xs cursor-pointer hover:bg-brand/30 transition-all">
                   {s}<X className="w-3 h-3" />
                 </span>
               ))}
@@ -289,9 +289,9 @@ export default function QuizPage() {
               const isSelected = selected.has(interest);
               return (
                 <button key={interest} onClick={() => toggleInterest(interest)}
-                  className={`flex items-center justify-between px-4 py-3 rounded-xl border text-sm font-medium text-left transition-all ${isSelected ? "bg-orange-500/15 border-orange-500/50 text-white" : "bg-zinc-900 border-zinc-700/60 text-zinc-300 hover:border-orange-500/40 hover:text-white"}`}>
+                  className={`flex items-center justify-between px-4 py-3 rounded-xl border text-sm font-medium text-left transition-all ${isSelected ? "bg-brand/15 border-brand/50 text-white" : "bg-zinc-900 border-zinc-700/60 text-zinc-300 hover:border-brand/40 hover:text-white"}`}>
                   <span>{interest}</span>
-                  {isSelected && <Check className="w-4 h-4 text-orange-400 flex-shrink-0" />}
+                  {isSelected && <Check className="w-4 h-4 text-brand-light flex-shrink-0" />}
                 </button>
               );
             })}
@@ -304,7 +304,7 @@ export default function QuizPage() {
           <div className="max-w-lg mx-auto flex items-center justify-between gap-4">
             <p className="text-sm text-zinc-500">{selected.size > 0 ? `${selected.size} selected` : "Pick at least one"}</p>
             <button onClick={handleSubmit} disabled={selected.size === 0}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-orange-500 hover:bg-orange-400 text-white font-semibold text-sm disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand hover:bg-brand-light text-white font-semibold text-sm disabled:opacity-40 disabled:cursor-not-allowed transition-all">
               Next <ChevronRight className="w-4 h-4" />
             </button>
           </div>
@@ -333,17 +333,17 @@ export default function QuizPage() {
               const isSelected = answered && JSON.stringify(answered) === JSON.stringify(opt.traits);
               return (
                 <button key={opt.label} onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: opt.traits }))}
-                  className={`w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all ${isSelected ? "bg-orange-500/15 border-orange-500/50 text-white" : "bg-zinc-900 border-zinc-700/60 text-zinc-300 hover:border-orange-500/40 hover:text-white"}`}>
+                  className={`w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all ${isSelected ? "bg-brand/15 border-brand/50 text-white" : "bg-zinc-900 border-zinc-700/60 text-zinc-300 hover:border-brand/40 hover:text-white"}`}>
                   <div className="flex items-center justify-between gap-3">
                     <span>{opt.label}</span>
-                    {isSelected && <Check className="w-4 h-4 text-orange-400 flex-shrink-0" />}
+                    {isSelected && <Check className="w-4 h-4 text-brand-light flex-shrink-0" />}
                   </div>
                 </button>
               );
             })}
           </div>
           <button onClick={handleNextQuestion} disabled={!answered}
-            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-400 text-white font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all">
             {currentQ < QUESTIONS.length - 1 ? "Next" : "Pick Your Interests"}
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -369,16 +369,16 @@ export default function QuizPage() {
         <div className="space-y-3 mb-8">
           {(["male", "female", "any"] as const).map((opt) => (
             <button key={opt} onClick={() => setCompanion(opt)}
-              className={`w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all ${companion === opt ? "bg-orange-500/15 border-orange-500/50 text-white" : "bg-zinc-900 border-zinc-700/60 text-zinc-300 hover:border-orange-500/40 hover:text-white"}`}>
+              className={`w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all ${companion === opt ? "bg-brand/15 border-brand/50 text-white" : "bg-zinc-900 border-zinc-700/60 text-zinc-300 hover:border-brand/40 hover:text-white"}`}>
               <div className="flex items-center justify-between">
                 <span>{opt === "male" ? "Male" : opt === "female" ? "Female" : "Any / Open to anyone"}</span>
-                {companion === opt && <Check className="w-4 h-4 text-orange-400" />}
+                {companion === opt && <Check className="w-4 h-4 text-brand-light" />}
               </div>
             </button>
           ))}
         </div>
         <button onClick={() => setStep("questions")} disabled={!companion}
-          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-400 text-white font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all">
           Start the Quiz <ChevronRight className="w-4 h-4" />
         </button>
       </div>

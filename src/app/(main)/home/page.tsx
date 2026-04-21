@@ -26,7 +26,7 @@ export default function HomePage() {
       <div className="max-w-lg mx-auto px-4 pt-8">
         <div className="flex items-baseline gap-1 mb-1">
           <h1 className="text-2xl font-black text-white tracking-tight">
-            friend<span className="text-orange-500">r</span>
+            friend<span className="text-brand">r</span>
           </h1>
         </div>
         {username && (
@@ -44,7 +44,7 @@ export default function HomePage() {
                 </Link>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <Link href={`/users/${post.user.id}`} className="font-semibold text-white hover:text-orange-400 transition-colors text-sm">
+                    <Link href={`/users/${post.user.id}`} className="font-semibold text-white hover:text-brand-light transition-colors text-sm">
                       {post.user.name}
                     </Link>
                     <span className="text-xs text-zinc-600">{timeLabel(post.hoursAgo)}</span>

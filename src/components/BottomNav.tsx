@@ -15,7 +15,7 @@ export default function BottomNav() {
           <div className="fixed inset-0 -z-10" onClick={() => setExpanded(false)} />
           <div className="flex flex-wrap justify-center gap-2.5 px-4 py-3 border-b border-zinc-800/60">
             <Link href="/chat" onClick={() => setExpanded(false)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-orange-500 hover:bg-orange-400 text-white font-semibold transition-all text-sm shadow-md">
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-brand hover:bg-brand-light text-white font-semibold transition-all text-sm shadow-md">
               <Bot className="w-4 h-4" />
               Chat with AI
             </Link>
@@ -48,7 +48,7 @@ export default function BottomNav() {
           className={`flex items-center justify-center w-12 h-12 rounded-full -mt-6 shadow-lg transition-all ${
             expanded
               ? "bg-zinc-100 text-zinc-900 rotate-45"
-              : "bg-orange-500 hover:bg-orange-400 text-white shadow-orange-500/30"
+              : "bg-brand hover:bg-brand-light text-white shadow-brand/30"
           }`}>
           <span className="text-2xl font-bold leading-none">+</span>
         </button>

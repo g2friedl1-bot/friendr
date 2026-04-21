@@ -29,7 +29,7 @@ export default function ProfilePage() {
 
         <div className="flex flex-col items-center gap-3 mb-8">
           <div className="relative">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center overflow-hidden">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand to-brand-light flex items-center justify-center overflow-hidden">
               {avatar
                 ? <img src={avatar} alt="Profile" className="w-full h-full object-cover" />
                 : <span className="text-4xl font-bold text-white select-none">?</span>}
@@ -47,15 +47,15 @@ export default function ProfilePage() {
 
         {quizResult ? (
           <Link href="/quiz"
-            className="flex items-center justify-between px-5 py-4 rounded-2xl bg-orange-500/10 border border-orange-500/30 mb-6 hover:border-orange-500/60 transition-all group">
+            className="flex items-center justify-between px-5 py-4 rounded-2xl bg-brand/10 border border-brand/30 mb-6 hover:border-brand/60 transition-all group">
             <div className="flex items-center gap-3">
               <span className="text-3xl">{quizResult.emoji}</span>
               <div>
-                <p className="text-xs font-semibold text-orange-400 uppercase tracking-wider mb-0.5">Friendr Type</p>
+                <p className="text-xs font-semibold text-brand-light uppercase tracking-wider mb-0.5">Friendr Type</p>
                 <p className="text-white font-bold text-lg leading-tight">{quizResult.title}</p>
                 <div className="flex flex-wrap gap-1 mt-1.5">
                   {quizResult.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-300 text-xs font-medium">{tag}</span>
+                    <span key={tag} className="px-2 py-0.5 rounded-full bg-brand/20 border border-brand/30 text-brand-light text-xs font-medium">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -64,7 +64,7 @@ export default function ProfilePage() {
           </Link>
         ) : (
           <Link href="/quiz"
-            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-zinc-700 text-zinc-300 hover:border-orange-500/60 hover:text-white font-semibold transition-all mb-6">
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-zinc-700 text-zinc-300 hover:border-brand/60 hover:text-white font-semibold transition-all mb-6">
             <span className="text-lg">✨</span>
             Take the Friendr Quiz
           </Link>
@@ -74,16 +74,16 @@ export default function ProfilePage() {
           <div>
             <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1.5">Name</label>
             <input type="text" placeholder="Your name"
-              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-orange-500 transition-colors" />
+              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors" />
           </div>
           <div>
             <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1.5">Bio</label>
             <textarea rows={3} placeholder="Tell others a bit about yourself..."
-              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-orange-500 transition-colors resize-none" />
+              className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors resize-none" />
           </div>
         </div>
 
-        <button className="mt-6 w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-400 text-white font-semibold transition-all">
+        <button className="mt-6 w-full py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-semibold transition-all">
           Save Profile
         </button>
       </div>

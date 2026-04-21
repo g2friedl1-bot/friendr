@@ -92,7 +92,7 @@ export default function PersonChatPage() {
             <div className={`max-w-[80%] flex flex-col gap-1 ${msg.role === "user" ? "items-end" : "items-start"}`}>
               <div className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                 msg.role === "user"
-                  ? "bg-orange-500 text-white rounded-br-sm"
+                  ? "bg-brand text-white rounded-br-sm"
                   : "bg-zinc-800 border border-zinc-700 text-zinc-100 rounded-bl-sm"
               }`}>
                 {msg.text}
@@ -120,10 +120,10 @@ export default function PersonChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
             placeholder={`Message ${user.name}...`}
-            className="flex-1 px-4 py-2.5 rounded-full bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-orange-500 transition-colors text-sm"
+            className="flex-1 px-4 py-2.5 rounded-full bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm"
           />
           <button onClick={send} disabled={!input.trim()}
-            className="w-10 h-10 rounded-full bg-orange-500 hover:bg-orange-400 flex items-center justify-center text-white disabled:opacity-30 transition-all">
+            className="w-10 h-10 rounded-full bg-brand hover:bg-brand-light flex items-center justify-center text-white disabled:opacity-30 transition-all">
             <Send className="w-4 h-4" />
           </button>
         </div>

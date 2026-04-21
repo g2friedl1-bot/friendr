@@ -6,11 +6,13 @@ import { getAllPosts } from "@/lib/users";
 
 function timeLabel(hoursAgo: number) {
   if (hoursAgo < 1) return "just now";
-  if (hoursAgo === 1) return "1 hour ago";
+  if (hoursAgo === 1) return "1h ago";
   if (hoursAgo < 24) return `${hoursAgo}h ago`;
   const d = Math.floor(hoursAgo / 24);
-  return d === 1 ? "1 day ago" : `${d} days ago`;
+  return d === 1 ? "1d ago" : `${d}d ago`;
 }
+
+const posts = getAllPosts();
 
 export default function HomePage() {
   const [username, setUsername] = useState("");
@@ -19,39 +21,35 @@ export default function HomePage() {
     setUsername(localStorage.getItem("friendr_username") || "");
   }, []);
 
-  const posts = getAllPosts();
-
   return (
-    <main className="min-h-screen bg-gradient-to-br from-violet-950 via-fuchsia-950 to-rose-950 pb-24">
+    <main className="min-h-screen bg-zinc-950 pb-24">
       <div className="max-w-lg mx-auto px-4 pt-8">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-black text-white tracking-tight">Friendr</h1>
-          {username && (
-            <p className="text-violet-300/80 mt-1">Hey, {username}! 👋</p>
-          )}
+        <div className="flex items-baseline gap-1 mb-1">
+          <h1 className="text-2xl font-black text-white tracking-tight">
+            friend<span className="text-orange-500">r</span>
+          </h1>
         </div>
+        {username && (
+          <p className="text-zinc-500 text-sm mb-6">Hey, {username} 👋</p>
+        )}
 
-        {/* Feed */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {posts.map((post, i) => (
-            <div key={i} className="p-4 rounded-2xl bg-violet-900/40 border border-violet-700/40 hover:border-violet-600/60 transition-colors">
+            <div key={i} className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors">
               <div className="flex items-start gap-3">
-                {/* Avatar */}
                 <Link href={`/users/${post.user.id}`} className="flex-shrink-0">
-                  <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${post.user.gradient} flex items-center justify-center text-white font-bold text-sm shadow-md`}>
+                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${post.user.gradient} flex items-center justify-center text-white font-bold text-xs`}>
                     {post.user.initials}
                   </div>
                 </Link>
-
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <Link href={`/users/${post.user.id}`} className="font-semibold text-white hover:text-fuchsia-300 transition-colors text-sm">
+                    <Link href={`/users/${post.user.id}`} className="font-semibold text-white hover:text-orange-400 transition-colors text-sm">
                       {post.user.name}
                     </Link>
-                    <span className="text-xs text-violet-400/70">{timeLabel(post.hoursAgo)}</span>
+                    <span className="text-xs text-zinc-600">{timeLabel(post.hoursAgo)}</span>
                   </div>
-                  <p className="text-violet-100/90 text-sm leading-relaxed">{post.text}</p>
+                  <p className="text-zinc-300 text-sm leading-relaxed">{post.text}</p>
                 </div>
               </div>
             </div>

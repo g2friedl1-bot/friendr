@@ -21,47 +21,40 @@ export default function SettingsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-violet-950 via-fuchsia-950 to-rose-950 pb-24">
+    <main className="min-h-screen bg-zinc-950 pb-24">
       <div className="max-w-lg mx-auto px-4 pt-8">
         <h1 className="text-2xl font-bold text-white mb-6">Settings</h1>
 
-        {/* Age verification status */}
-        <div className={`flex items-center gap-4 px-4 py-4 rounded-2xl border mb-6 ${verified ? "bg-green-500/10 border-green-500/40" : "bg-violet-900/40 border-violet-700/50"}`}>
-          {verified ? (
-            <ShieldCheck className="w-6 h-6 text-green-400 flex-shrink-0" />
-          ) : (
-            <Shield className="w-6 h-6 text-violet-400 flex-shrink-0" />
-          )}
+        <div className={`flex items-center gap-4 px-4 py-4 rounded-2xl border mb-6 ${verified ? "bg-emerald-950/40 border-emerald-800/50" : "bg-zinc-900 border-zinc-800"}`}>
+          {verified
+            ? <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+            : <Shield className="w-5 h-5 text-zinc-500 flex-shrink-0" />}
           <div>
-            <p className={`font-semibold text-sm ${verified ? "text-green-300" : "text-white"}`}>
+            <p className={`font-semibold text-sm ${verified ? "text-emerald-300" : "text-white"}`}>
               Age Verification: {verified ? "✓ Verified (18+)" : "Not Verified"}
             </p>
-            <p className="text-xs text-violet-400/70 mt-0.5">
+            <p className="text-xs text-zinc-500 mt-0.5">
               {verified ? "You have confirmed you are 18 or older." : "Required to chat with other users."}
             </p>
           </div>
         </div>
 
-        {/* Settings list */}
-        <div className="space-y-2">
+        <div className="space-y-1">
           {items.map((item) => (
             <Link key={item.label} href={item.href}
-              className="flex items-center justify-between px-4 py-4 rounded-xl bg-violet-900/40 border border-violet-700/50 hover:border-fuchsia-500/50 cursor-pointer transition-colors">
+              className="flex items-center justify-between px-4 py-4 rounded-xl hover:bg-zinc-900 transition-colors cursor-pointer">
               <div>
                 <p className="font-semibold text-white text-sm">{item.label}</p>
-                <p className="text-xs text-violet-300/80 mt-0.5">{item.desc}</p>
+                <p className="text-xs text-zinc-500 mt-0.5">{item.desc}</p>
               </div>
-              <span className="text-violet-400 text-lg">›</span>
+              <span className="text-zinc-600">›</span>
             </Link>
           ))}
         </div>
 
         <button
-          onClick={() => {
-            localStorage.clear();
-            window.location.href = "/login";
-          }}
-          className="mt-8 w-full py-3 rounded-xl border border-rose-500/50 text-rose-400 font-semibold hover:bg-rose-500/10 transition-all">
+          onClick={() => { localStorage.clear(); window.location.href = "/login"; }}
+          className="mt-8 w-full py-3 rounded-xl border border-zinc-800 text-zinc-500 hover:border-red-800 hover:text-red-400 font-semibold transition-all text-sm">
           Sign Out
         </button>
       </div>

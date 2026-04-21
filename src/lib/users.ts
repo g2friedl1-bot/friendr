@@ -227,10 +227,12 @@ export function getUserById(id: string): FakeUser | undefined {
   return FAKE_USERS.find((u) => u.id === id);
 }
 
+export const ALL_POSTS = FAKE_USERS.flatMap((u) =>
+  u.posts.map((p) => ({ ...p, user: u }))
+).sort((a, b) => a.hoursAgo - b.hoursAgo);
+
 export function getAllPosts() {
-  return FAKE_USERS.flatMap((u) =>
-    u.posts.map((p) => ({ ...p, user: u }))
-  ).sort((a, b) => a.hoursAgo - b.hoursAgo);
+  return ALL_POSTS;
 }
 
 export function getMatchedUsers(interests: string[]): FakeUser[] {

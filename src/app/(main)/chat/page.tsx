@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ArrowLeft, Send } from "lucide-react";
+import { ArrowLeft, Send, Phone } from "lucide-react";
 import Link from "next/link";
 import { getAIResponse } from "@/lib/ai-responses";
 
-type Message = { role: "user" | "ai"; text: string; time: string };
+type Message = { role: "user" | "ai"; text: string; time: string; isCrisis?: boolean };
 
 function nowTime() {
   return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -22,7 +22,6 @@ export default function AIChatPage() {
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -30,7 +29,6 @@ export default function AIChatPage() {
 
   useEffect(() => {
     localStorage.setItem("friendr_ai_messages", JSON.stringify(messages));
-    // Save last message for chats list
     const last = messages[messages.length - 1];
     if (last) {
       localStorage.setItem("friendr_ai_last", JSON.stringify({ text: last.text, role: last.role, time: last.time }));
@@ -44,10 +42,10 @@ export default function AIChatPage() {
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setTyping(true);
-    const delay = 800 + Math.random() * 800;
+    const delay = 800 + Math.random() * 600;
     setTimeout(() => {
-      const aiText = getAIResponse(text);
-      setMessages((prev) => [...prev, { role: "ai", text: aiText, time: nowTime() }]);
+      const result = getAIResponse(text);
+      setMessages((prev) => [...prev, { role: "ai", text: result.text, time: nowTime(), isCrisis: result.isCrisis }]);
       setTyping(false);
     }, delay);
   }
@@ -70,18 +68,37 @@ export default function AIChatPage() {
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-            <div className={`max-w-[80%] ${msg.role === "user" ? "items-end" : "items-start"} flex flex-col gap-1`}>
+            <div className={`max-w-[80%] flex flex-col gap-1 ${msg.role === "user" ? "items-end" : "items-start"}`}>
               <div className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                 msg.role === "user"
                   ? "bg-gradient-to-br from-fuchsia-500 to-rose-500 text-white rounded-br-sm"
-                  : "bg-violet-800/60 border border-violet-700/50 text-violet-100 rounded-bl-sm"
+                  : msg.isCrisis
+                    ? "bg-red-900/60 border border-red-500/50 text-white rounded-bl-sm"
+                    : "bg-violet-800/60 border border-violet-700/50 text-violet-100 rounded-bl-sm"
               }`}>
                 {msg.text}
               </div>
+
+              {/* Crisis action buttons */}
+              {msg.isCrisis && (
+                <div className="flex flex-col gap-2 mt-1 w-full">
+                  <a href="tel:988"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold text-sm transition-all shadow-lg shadow-red-500/30">
+                    <Phone className="w-4 h-4" />
+                    Call or Text 988 — Crisis Lifeline
+                  </a>
+                  <Link href="/betterhelp"
+                    className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-red-500/50 text-red-300 hover:bg-red-500/10 hover:text-white font-semibold text-sm transition-all">
+                    View all support resources →
+                  </Link>
+                </div>
+              )}
+
               <span className="text-xs text-violet-500/60 px-1">{msg.time}</span>
             </div>
           </div>
         ))}
+
         {typing && (
           <div className="flex justify-start">
             <div className="bg-violet-800/60 border border-violet-700/50 px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1">
@@ -98,7 +115,6 @@ export default function AIChatPage() {
       <div className="fixed bottom-[65px] left-0 right-0 bg-violet-950/95 backdrop-blur-md border-t border-violet-800/50 px-4 py-3 z-40">
         <div className="max-w-lg mx-auto flex gap-2">
           <input
-            ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}

@@ -1,6 +1,12 @@
+export type AIResult = {
+  text: string;
+  isCrisis: boolean;
+};
+
 type ResponseRule = {
   triggers: string[];
   responses: string[];
+  isCrisis?: boolean;
 };
 
 const RULES: ResponseRule[] = [
@@ -157,16 +163,18 @@ const RULES: ResponseRule[] = [
     ],
   },
   {
-    triggers: ["suicide", "kill myself", "end it all", "don't want to be here", "want to die", "better off dead", "end my life"],
+    triggers: ["suicide", "kill myself", "end it all", "don't want to be here", "want to die", "better off dead", "end my life", "wanna die", "want to end", "kill my self"],
     responses: [
-      "I hear you, and I'm so glad you're talking to someone right now. 💜 Please reach out to the 988 Suicide & Crisis Lifeline — just call or text **988**. They're available 24/7 and they care. You matter. Can you tell me what's going on?",
+      "I hear you, and I'm so glad you're talking to me right now. 💜 Please reach out to the 988 Suicide & Crisis Lifeline — call or text 988. They're available 24/7 and they care. You matter more than you know.",
     ],
+    isCrisis: true,
   },
   {
-    triggers: ["hurt myself", "self harm", "cutting", "hurting myself", "self-harm"],
+    triggers: ["hurt myself", "self harm", "cutting", "hurting myself", "self-harm", "harm myself"],
     responses: [
-      "Thank you for trusting me with this. 💜 Please text HOME to **741741** (Crisis Text Line) or call **988**. You deserve real support right now. I'm here too — what's been going on?",
+      "Thank you for trusting me with this. 💜 You deserve real support right now. Please reach out — call or text 988, or text HOME to 741741. I'm here too.",
     ],
+    isCrisis: true,
   },
   {
     triggers: ["thanks", "thank you", "thx", "ty", "appreciate"],
@@ -206,17 +214,20 @@ const DEFAULTS = [
 
 let defaultIndex = 0;
 
-export function getAIResponse(message: string): string {
+export function getAIResponse(message: string): AIResult {
   const msg = message.toLowerCase().trim();
 
   for (const rule of RULES) {
     if (rule.triggers.some((t) => msg.includes(t))) {
       const pool = rule.responses;
-      return pool[Math.floor(Math.random() * pool.length)];
+      return {
+        text: pool[Math.floor(Math.random() * pool.length)],
+        isCrisis: rule.isCrisis ?? false,
+      };
     }
   }
 
-  const response = DEFAULTS[defaultIndex % DEFAULTS.length];
+  const text = DEFAULTS[defaultIndex % DEFAULTS.length];
   defaultIndex++;
-  return response;
+  return { text, isCrisis: false };
 }

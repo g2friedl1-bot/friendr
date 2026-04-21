@@ -22,8 +22,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Hiking", "Photography", "Music", "Nature", "Outdoors"],
     bio: "Trail runner & amateur photographer. Always chasing golden hour.",
     posts: [
-      { text: "Caught the most amazing sunrise on the trail this morning 🌄", hoursAgo: 1 },
-      { text: "New hiking boots just arrived — first real test this weekend!", hoursAgo: 8 },
+      { text: "Caught the most amazing sunrise on the trail this morning.", hoursAgo: 1 },
+      { text: "New hiking boots just arrived — first real test this weekend.", hoursAgo: 8 },
       { text: "Nothing beats mountain air after a long week.", hoursAgo: 26 },
     ],
     chatScript: [
@@ -44,8 +44,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Gaming", "Anime", "Coding", "Technology", "Board Games"],
     bio: "Software dev by day, gamer by night. Anime list never gets shorter.",
     posts: [
-      { text: "Finally beat that boss I've been stuck on for two weeks 🎮", hoursAgo: 2 },
-      { text: "Anyone else watching the new season? No spoilers please 👀", hoursAgo: 14 },
+      { text: "Finally beat that boss I've been stuck on for two weeks.", hoursAgo: 2 },
+      { text: "Anyone else watching the new season? No spoilers please.", hoursAgo: 14 },
       { text: "Pushed my first open source project today. Small win but a win.", hoursAgo: 36 },
     ],
     chatScript: [
@@ -66,8 +66,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Baking", "Reading", "Yoga", "Cooking", "Meditation"],
     bio: "Sourdough obsessed. Yoga student. Always have a book on the go.",
     posts: [
-      { text: "Made sourdough from scratch today, turned out perfect! 🍞", hoursAgo: 3 },
-      { text: "Morning yoga set the whole tone for today ☀️", hoursAgo: 18 },
+      { text: "Made sourdough from scratch today, turned out perfect.", hoursAgo: 3 },
+      { text: "Morning yoga set the whole tone for today.", hoursAgo: 18 },
       { text: "Currently reading three books at once. Send help.", hoursAgo: 42 },
     ],
     chatScript: [
@@ -88,8 +88,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Travel", "Photography", "Art", "Fashion", "Film Making"],
     bio: "Chasing sunsets, galleries, and good coffee. Aspiring filmmaker.",
     posts: [
-      { text: "Car show downtown at 10am tomorrow, anyone going? 🚗", hoursAgo: 4 },
-      { text: "Just booked flights for my next trip ✈️ Cannot wait.", hoursAgo: 22 },
+      { text: "Car show downtown at 10am tomorrow, anyone going?", hoursAgo: 4 },
+      { text: "Just booked flights for my next trip. Cannot wait.", hoursAgo: 22 },
       { text: "Gallery opening tonight was stunning. Art really does heal.", hoursAgo: 48 },
     ],
     chatScript: [
@@ -110,9 +110,9 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Fitness", "Sports", "Running", "Weightlifting", "Basketball"],
     bio: "5AM runs, heavy lifts, and game nights. Competitive but friendly.",
     posts: [
-      { text: "5K personal best this morning 💪 Felt unstoppable", hoursAgo: 5 },
-      { text: "Leg day. Enough said. 🦵", hoursAgo: 20 },
-      { text: "Game tonight at 7 — let's gooo 🏀", hoursAgo: 44 },
+      { text: "5K personal best this morning. Felt unstoppable.", hoursAgo: 5 },
+      { text: "Leg day. Enough said.", hoursAgo: 20 },
+      { text: "Game tonight at 7 — let's go 🏀", hoursAgo: 44 },
     ],
     chatScript: [
       "Yo! Nice to connect 💪",
@@ -132,8 +132,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Music", "Dancing", "Fashion", "Singing", "Art"],
     bio: "Making playlists, making moves, making memories.",
     posts: [
-      { text: "New playlist drop coming this week 🎵 been working on it for so long", hoursAgo: 6 },
-      { text: "Dance class was everything today 💃", hoursAgo: 28 },
+      { text: "New playlist drop coming this week — been working on it for so long.", hoursAgo: 6 },
+      { text: "Dance class was everything today.", hoursAgo: 28 },
       { text: "Can't stop listening to this album on repeat. Send music recs please.", hoursAgo: 52 },
     ],
     chatScript: [
@@ -154,8 +154,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Nature", "Gardening", "Cooking", "Outdoors", "Volunteering"],
     bio: "Community garden keeper. Slow mornings and long walks.",
     posts: [
-      { text: "I loved the park today. Cherry blossoms are absolutely peak 🌸", hoursAgo: 1 },
-      { text: "Planted my first herb garden this spring 🌿 rosemary and basil are thriving", hoursAgo: 30 },
+      { text: "I loved the park today. Cherry blossoms are absolutely peak right now.", hoursAgo: 1 },
+      { text: "Planted my first herb garden this spring — rosemary and basil are thriving.", hoursAgo: 30 },
       { text: "Volunteering at the food bank this Saturday — anyone want to join?", hoursAgo: 54 },
     ],
     chatScript: [
@@ -176,8 +176,8 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Technology", "Investing", "Podcasts", "Business", "Coding"],
     bio: "Builder, listener, learner. Trying to make things that matter.",
     posts: [
-      { text: "New episode of my favorite podcast just dropped 🎙️ highly recommend", hoursAgo: 7 },
-      { text: "Markets are wild right now but staying the course 📈", hoursAgo: 32 },
+      { text: "New episode of my favorite podcast just dropped — highly recommend.", hoursAgo: 7 },
+      { text: "Markets are wild right now but staying the course.", hoursAgo: 32 },
       { text: "Built a small tool today that saved me 2 hours a week. Small wins compound.", hoursAgo: 56 },
     ],
     chatScript: [
@@ -198,9 +198,9 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Art", "Writing", "Film Making", "Photography", "Books"],
     bio: "Aspiring filmmaker. Amateur writer. Full-time overthinker.",
     posts: [
-      { text: "Finished my short film script — now to find a crew 🎬", hoursAgo: 9 },
-      { text: "Reading three books at once is a personality trait apparently 📚", hoursAgo: 35 },
-      { text: "Wrote 2000 words today. Tired but really proud. ✍️", hoursAgo: 60 },
+      { text: "Finished my short film script — now to find a crew.", hoursAgo: 9 },
+      { text: "Reading three books at once is a personality trait apparently.", hoursAgo: 35 },
+      { text: "Wrote 2000 words today. Tired but really proud.", hoursAgo: 60 },
     ],
     chatScript: [
       "Hi! Fellow creative? 🎨 Love that",
@@ -220,9 +220,9 @@ export const FAKE_USERS: FakeUser[] = [
     interests: ["Volunteering", "Spirituality", "Meditation", "Yoga", "Philosophy"],
     bio: "Still learning how to be present. Big believer in small acts of kindness.",
     posts: [
-      { text: "Morning meditation changed my whole week 🧘 10/10 would recommend", hoursAgo: 2 },
+      { text: "Morning meditation changed my whole week. 10/10 would recommend.", hoursAgo: 2 },
       { text: "Grateful for the little things today. That's all.", hoursAgo: 38 },
-      { text: "Had the most meaningful conversation with a stranger at the park today 💬", hoursAgo: 62 },
+      { text: "Had the most meaningful conversation with a stranger at the park today.", hoursAgo: 62 },
     ],
     chatScript: [
       "Hey, really glad you reached out 😊",

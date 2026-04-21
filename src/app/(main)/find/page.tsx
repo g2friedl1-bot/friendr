@@ -46,8 +46,8 @@ export default function FindPage() {
         <div className="space-y-2">
           {users.map((user) => (
             <div key={user.id} className="flex items-center gap-4 px-4 py-4 rounded-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
-              <Link href={`/users/${user.id}`} className={`w-11 h-11 rounded-full bg-gradient-to-br ${user.gradient} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
-                {user.initials}
+              <Link href={`/users/${user.id}`} className="flex-shrink-0">
+                <img src={user.photo} alt={user.name} className="w-11 h-11 rounded-full object-cover" />
               </Link>
               <div className="flex-1 min-w-0">
                 <Link href={`/users/${user.id}`}>

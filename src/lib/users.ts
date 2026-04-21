@@ -4,6 +4,7 @@ export type FakeUser = {
   age: number;
   initials: string;
   gradient: string;
+  photo: string;
   interests: string[];
   bio: string;
   posts: { text: string; hoursAgo: number }[];
@@ -17,6 +18,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 22,
     initials: "A",
     gradient: "from-violet-500 to-fuchsia-600",
+    photo: "https://randomuser.me/api/portraits/men/55.jpg",
     interests: ["Hiking", "Photography", "Music", "Nature", "Outdoors"],
     bio: "Trail runner & amateur photographer. Always chasing golden hour.",
     posts: [
@@ -38,6 +40,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 25,
     initials: "J",
     gradient: "from-blue-500 to-indigo-600",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
     interests: ["Gaming", "Anime", "Coding", "Technology", "Board Games"],
     bio: "Software dev by day, gamer by night. Anime list never gets shorter.",
     posts: [
@@ -59,6 +62,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 20,
     initials: "S",
     gradient: "from-rose-400 to-pink-600",
+    photo: "https://randomuser.me/api/portraits/women/45.jpg",
     interests: ["Baking", "Reading", "Yoga", "Cooking", "Meditation"],
     bio: "Sourdough obsessed. Yoga student. Always have a book on the go.",
     posts: [
@@ -80,6 +84,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 28,
     initials: "R",
     gradient: "from-brand-light to-brand",
+    photo: "https://randomuser.me/api/portraits/women/68.jpg",
     interests: ["Travel", "Photography", "Art", "Fashion", "Film Making"],
     bio: "Chasing sunsets, galleries, and good coffee. Aspiring filmmaker.",
     posts: [
@@ -101,6 +106,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 23,
     initials: "M",
     gradient: "from-green-500 to-emerald-600",
+    photo: "https://randomuser.me/api/portraits/men/11.jpg",
     interests: ["Fitness", "Sports", "Running", "Weightlifting", "Basketball"],
     bio: "5AM runs, heavy lifts, and game nights. Competitive but friendly.",
     posts: [
@@ -122,6 +128,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 21,
     initials: "T",
     gradient: "from-fuchsia-500 to-purple-600",
+    photo: "https://randomuser.me/api/portraits/women/22.jpg",
     interests: ["Music", "Dancing", "Fashion", "Singing", "Art"],
     bio: "Making playlists, making moves, making memories.",
     posts: [
@@ -143,6 +150,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 26,
     initials: "C",
     gradient: "from-teal-400 to-cyan-600",
+    photo: "https://randomuser.me/api/portraits/women/76.jpg",
     interests: ["Nature", "Gardening", "Cooking", "Outdoors", "Volunteering"],
     bio: "Community garden keeper. Slow mornings and long walks.",
     posts: [
@@ -164,6 +172,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 24,
     initials: "D",
     gradient: "from-slate-400 to-blue-600",
+    photo: "https://randomuser.me/api/portraits/men/43.jpg",
     interests: ["Technology", "Investing", "Podcasts", "Business", "Coding"],
     bio: "Builder, listener, learner. Trying to make things that matter.",
     posts: [
@@ -185,6 +194,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 22,
     initials: "AV",
     gradient: "from-pink-400 to-rose-600",
+    photo: "https://randomuser.me/api/portraits/women/33.jpg",
     interests: ["Art", "Writing", "Film Making", "Photography", "Books"],
     bio: "Aspiring filmmaker. Amateur writer. Full-time overthinker.",
     posts: [
@@ -206,6 +216,7 @@ export const FAKE_USERS: FakeUser[] = [
     age: 27,
     initials: "Q",
     gradient: "from-violet-400 to-indigo-600",
+    photo: "https://randomuser.me/api/portraits/women/55.jpg",
     interests: ["Volunteering", "Spirituality", "Meditation", "Yoga", "Philosophy"],
     bio: "Still learning how to be present. Big believer in small acts of kindness.",
     posts: [

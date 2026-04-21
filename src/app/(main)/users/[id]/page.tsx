@@ -46,9 +46,11 @@ export default function UserProfilePage() {
         </Link>
 
         <div className="flex items-center gap-5 mb-6">
-          <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${user.gradient} flex items-center justify-center text-white font-bold text-2xl`}>
-            {user.initials}
-          </div>
+          <img
+            src={user.photo}
+            alt={user.name}
+            className="w-20 h-20 rounded-full object-cover ring-2 ring-zinc-200 dark:ring-zinc-700"
+          />
           <div>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">{user.name}</h1>
             <p className="text-zinc-500 text-sm">Age {user.age}</p>

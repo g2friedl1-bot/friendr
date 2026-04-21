@@ -77,9 +77,7 @@ export default function PersonChatPage() {
         <Link href="/chats" className="w-8 h-8 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all">
           <ArrowLeft className="w-4 h-4" />
         </Link>
-        <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${user.gradient} flex items-center justify-center text-white font-bold text-sm`}>
-          {user.initials}
-        </div>
+        <img src={user.photo} alt={user.name} className="w-9 h-9 rounded-full object-cover" />
         <div>
           <p className="font-semibold text-zinc-900 dark:text-white text-sm">{user.name}</p>
           <p className="text-xs text-emerald-500 dark:text-emerald-400">Active now</p>

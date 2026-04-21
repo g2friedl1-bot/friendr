@@ -9,6 +9,7 @@ type ChatEntry = {
   name: string;
   initials: string;
   gradient: string;
+  photo?: string;
   lastText: string;
   time: string;
 };
@@ -34,7 +35,7 @@ export default function ChatsPage() {
       if (saved) {
         try {
           const d = JSON.parse(saved);
-          entries.push({ href: `/chat/${u.id}`, name: u.name, initials: u.initials, gradient: u.gradient, lastText: d.lastText, time: d.time });
+          entries.push({ href: `/chat/${u.id}`, name: u.name, initials: u.initials, gradient: u.gradient, photo: u.photo, lastText: d.lastText, time: d.time });
         } catch { /* skip */ }
       }
     });
@@ -51,8 +52,14 @@ export default function ChatsPage() {
           {chats.map((chat) => (
             <Link key={chat.href} href={chat.href}
               className="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all">
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${chat.gradient} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
-                {chat.initials}
+              <div className="flex-shrink-0 relative">
+                {chat.photo ? (
+                  <img src={chat.photo} alt={chat.name} className="w-12 h-12 rounded-full object-cover" />
+                ) : (
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${chat.gradient} flex items-center justify-center text-white font-bold text-sm`}>
+                    {chat.initials}
+                  </div>
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-baseline justify-between mb-0.5">

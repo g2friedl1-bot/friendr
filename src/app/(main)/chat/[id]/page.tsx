@@ -4,7 +4,8 @@ import { useParams } from "next/navigation";
 import { getUserById } from "@/lib/users";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowLeft, Send } from "lucide-react";
+import { ArrowLeft, Send, Flag } from "lucide-react";
+import ReportModal from "@/components/ReportModal";
 
 type Message = { role: "user" | "them"; text: string; time: string };
 
@@ -19,6 +20,7 @@ export default function PersonChatPage() {
   const [input, setInput] = useState("");
   const [scriptIndex, setScriptIndex] = useState(0);
   const [typing, setTyping] = useState(false);
+  const [showReport, setShowReport] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,10 +80,17 @@ export default function PersonChatPage() {
           <ArrowLeft className="w-4 h-4" />
         </Link>
         <img src={user.photo} alt={user.name} className="w-9 h-9 rounded-full object-cover" />
-        <div>
+        <div className="flex-1">
           <p className="font-semibold text-zinc-900 dark:text-white text-sm">{user.name}</p>
           <p className="text-xs text-emerald-500 dark:text-emerald-400">Active now</p>
         </div>
+        <button
+          onClick={() => setShowReport(true)}
+          className="w-8 h-8 flex items-center justify-center rounded-full text-zinc-400 dark:text-zinc-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition-all"
+          aria-label="Report user"
+        >
+          <Flag className="w-4 h-4" />
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
@@ -110,6 +119,8 @@ export default function PersonChatPage() {
         )}
         <div ref={bottomRef} />
       </div>
+
+      {showReport && <ReportModal name={user.name} onClose={() => setShowReport(false)} />}
 
       <div className="fixed bottom-[65px] left-0 right-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-800 px-4 py-3 z-40">
         <div className="max-w-lg mx-auto flex gap-2">

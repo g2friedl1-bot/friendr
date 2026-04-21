@@ -3,15 +3,17 @@
 import { useParams, useRouter } from "next/navigation";
 import { getUserById } from "@/lib/users";
 import Link from "next/link";
-import { ArrowLeft, MessageCircle } from "lucide-react";
+import { ArrowLeft, MessageCircle, Flag } from "lucide-react";
 import { useState, useEffect } from "react";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
+import ReportModal from "@/components/ReportModal";
 
 export default function UserProfilePage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const user = getUserById(id);
   const [showAgeModal, setShowAgeModal] = useState(false);
+  const [showReport, setShowReport] = useState(false);
   const [verified, setVerified] = useState(false);
 
   useEffect(() => {
@@ -41,9 +43,18 @@ export default function UserProfilePage() {
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 pb-24">
       <div className="max-w-lg mx-auto px-4 pt-8">
-        <Link href="/home" className="inline-flex items-center gap-2 text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors mb-6 text-sm">
-          <ArrowLeft className="w-4 h-4" /> Back
-        </Link>
+        <div className="flex items-center justify-between mb-6">
+          <Link href="/home" className="inline-flex items-center gap-2 text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors text-sm">
+            <ArrowLeft className="w-4 h-4" /> Back
+          </Link>
+          <button
+            onClick={() => setShowReport(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-400 dark:text-zinc-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 transition-all"
+          >
+            <Flag className="w-3.5 h-3.5" />
+            Report
+          </button>
+        </div>
 
         <div className="flex items-center gap-5 mb-6">
           <img
@@ -90,6 +101,7 @@ export default function UserProfilePage() {
       </div>
 
       {showAgeModal && <AgeVerificationModal onVerify={handleVerified} onCancel={() => setShowAgeModal(false)} />}
+      {showReport && <ReportModal name={user.name} onClose={() => setShowReport(false)} />}
     </main>
   );
 }

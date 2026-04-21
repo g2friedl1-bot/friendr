@@ -5,7 +5,6 @@ import { getUserById } from "@/lib/users";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowLeft, Send, Flag, UserPlus } from "lucide-react";
-import Link from "next/link";
 import ReportModal from "@/components/ReportModal";
 import { useFriends } from "@/lib/useFriends";
 

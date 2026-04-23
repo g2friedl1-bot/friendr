@@ -13,6 +13,11 @@ export default function SettingsPage() {
     setVerified(localStorage.getItem("friendr_age_verified") === "true");
   }, []);
 
+  function restartApp() {
+    localStorage.clear();
+    window.location.href = "/login";
+  }
+
   const items = [
     { label: "Interests & Quiz", desc: "Update your interests and personality quiz", href: "/quiz" },
     { label: "Notifications", desc: "Manage push notifications", href: "#" },
@@ -43,10 +48,14 @@ export default function SettingsPage() {
             </div>
           </div>
           <button
+            type="button"
             onClick={toggle}
-            className={`relative w-12 h-6 rounded-full transition-colors duration-200 ${theme === "dark" ? "bg-brand" : "bg-zinc-300"}`}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            className={`inline-flex h-7 w-12 shrink-0 items-center rounded-full p-1 transition-colors duration-200 ${theme === "dark" ? "bg-brand" : "bg-zinc-300"}`}
           >
-            <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-200 ${theme === "dark" ? "translate-x-6" : "translate-x-0.5"}`} />
+            <span
+              className={`pointer-events-none block h-5 w-5 shrink-0 rounded-full bg-white shadow transition-transform duration-200 ease-out ${theme === "dark" ? "translate-x-5" : "translate-x-0"}`}
+            />
           </button>
         </div>
 
@@ -78,11 +87,18 @@ export default function SettingsPage() {
           ))}
         </div>
 
-        <button
-          onClick={() => { localStorage.clear(); window.location.href = "/login"; }}
-          className="mt-8 w-full py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:border-red-300 dark:hover:border-red-800 hover:text-red-500 font-semibold transition-all text-sm">
-          Sign Out
-        </button>
+        <div className="mt-8 space-y-2">
+          <button
+            type="button"
+            onClick={restartApp}
+            className="w-full py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-200 hover:border-amber-400/70 dark:hover:border-amber-500/50 hover:bg-amber-50/80 dark:hover:bg-amber-950/30 font-semibold transition-all text-sm"
+          >
+            Restart app
+          </button>
+          <p className="text-center text-xs text-zinc-400 dark:text-zinc-600 px-1">
+            Clears your name, chats, quiz, friends, and preferences, then returns to the welcome screen.
+          </p>
+        </div>
       </div>
     </main>
   );
